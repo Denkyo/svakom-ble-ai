@@ -83,11 +83,11 @@ const tools = [
         pattern: {
           type: "integer",
           minimum: 1,
-          maximum: 8
+          maximum: 10
         },
         level: {
           type: "number",
-          minimum: 0.2,
+          minimum: 0.1,
           maximum: 1,
           description: "花样强度，范围 0.2 到 1"
         },
@@ -193,8 +193,8 @@ app.post("/mcp", (req, res) => {
       });
     } else if (name === "toy_set_pattern") {
       result = queueCommand({
-        pattern: Math.max(1, Math.min(8, Math.round(Number(args.pattern)))),
-        level: Math.max(0.2, Math.min(1, Number(args.level ?? 0.6))),
+        pattern: Math.max(1, Math.min(10, Math.round(Number(args.pattern)))),
+        level: Math.max(0.1, Math.min(1, Number(args.level ?? 0.5))),
         ...(args.sec ? { sec: Number(args.sec) } : {})
       });
     } else if (name === "toy_stop") {
